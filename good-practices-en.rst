@@ -68,8 +68,10 @@ Opensilex application as a service
  Type=oneshot
  RemainAfterExit=yes
  User=opensilex
- ExecStart=/home/opensilex/1.0.0-beta/bin/opensilex.sh server start --adminPort=4081 --port=8081
- ExecStop=/home/opensilex/1.0.0-beta/bin/opensilex.sh server stop --port=8081
+ ExecStart=<path_to_opensilex_application>/bin/opensilex.sh server start --adminPort=4081 --port=8081
+ ExecStop=<path_to_opensilex_application>/bin/opensilex.sh server stop --port=8081
+ 
+ <path_to_opensilex_application> corresponds to the path where opensilex is installed.
 
  [Install]
  WantedBy=multi-user.target
@@ -93,6 +95,6 @@ Opensilex application as a service
  systemctl status opensilex
  May 08 11:37:22 phisphenoarch opensilex.sh[935]: INFO: Starting ProtocolHandler ["http-nio-8081"]
 
-You can also open a browser and go the opensilex application at http://server_IP_adress:8081/app/
+You can also open a browser and go the opensilex application at http://<IP_address_of_your_server>:8081/app/
 
-
+The tag <IP_address_of_your_server> refers to the address IP of your server.
