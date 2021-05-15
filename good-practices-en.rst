@@ -13,9 +13,7 @@ Setting up a production environment
 Graphdb as a service
 --------------------
 
-systemd replaces the init system V daemon for Linux. 
-
-Its purpose is to offer a better management of dependencies between services, as well as to allow parallel loading of services at startup.
+systemd replaces the init system V daemon for Linux. Its purpose is to offer a better management of dependencies between services, as well as to allow parallel loading of services at startup.
 
 
 - Give appropriate rights to the opensilex user on graphdb folder:
@@ -34,11 +32,13 @@ Its purpose is to offer a better management of dependencies between services, as
   [Service]
   Type=forking
   User=opensilex
-  ExecStart=/opt/graphdb-free-9.7.0/bin/graphdb -d
+  ExecStart=<path_to_graphdb_application>/bin/graphdb -d
   ExecStop=kill $(ps -aux | grep graphdb | grep java |  awk '{ print $2 }')
-
+  
   [Install]
   WantedBy=multi-user.target
+
+ The tag <path_to_graphdb_application> corresponds to the path where graphdb is installed.
 
 - To run the graphdb service at startup, use the enable command :
 
@@ -55,7 +55,7 @@ Its purpose is to offer a better management of dependencies between services, as
 Opensilex application as a service
 ----------------------------------
 
-- Create file */etc/systemd/system/opensilex.service*:
+- Create file **/etc/systemd/system/opensilex.service**:
 
 ::
 
@@ -74,7 +74,7 @@ Opensilex application as a service
  [Install]
  WantedBy=multi-user.target
  
-<path_to_opensilex_application> corresponds to the path where opensilex is installed.
+The tag <path_to_opensilex_application> corresponds to the path where opensilex is installed.
 
 - To start opensilex service at startup, use the enable command:
 
@@ -117,7 +117,7 @@ By default MongoDB runs without authentication. Starting in version 3.6 MongoDB 
 ::
  
  sync -av /var/lib/mongodb/keyfile root@ip-of-your-second-instance:/var/lib/mongodb
-…..
+
 
 Restart each member of the replica set with access control enabled.
 
