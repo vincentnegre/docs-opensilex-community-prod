@@ -189,7 +189,7 @@ You should see "Successfully added user" as the response.
 Replace the tag <db_name> with the name of your mongo database.
  
 
-- Add the following lines in the opensilex config configuration file ~/config/opensilex.yml (mongodb section) :
+- Add the following lines in the opensilex configuration file <path_to_opensilex_application>/config/opensilex.yml (mongodb section) :
 
 :
             #MongoDB user name
@@ -197,6 +197,8 @@ Replace the tag <db_name> with the name of your mongo database.
 
             #MongoDB password
             password: set_password_for_admin_user
+
+<path_to_opensilex_application> corresponds to the path where opensilex is installed.
 
 - Restart opensilex application:
 
