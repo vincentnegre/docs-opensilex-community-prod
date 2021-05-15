@@ -71,10 +71,10 @@ Opensilex application as a service
  ExecStart=<path_to_opensilex_application>/bin/opensilex.sh server start --adminPort=4081 --port=8081
  ExecStop=<path_to_opensilex_application>/bin/opensilex.sh server stop --port=8081
  
- <path_to_opensilex_application> corresponds to the path where opensilex is installed.
-
  [Install]
  WantedBy=multi-user.target
+ 
+<path_to_opensilex_application> corresponds to the path where opensilex is installed.
 
 - To start opensilex service at startup, use the enable command:
 
@@ -112,7 +112,7 @@ By default MongoDB runs without authentication. Starting in version 3.6 MongoDB 
  sudo chmod 400 /var/lib/mongodb/keyfile
  sudo chown mongodb:mongodb /var/lib/mongodb/keyfile
 
-- Step is needed only if you have *different* mongodb instances. You should copy  keyfile to each replicat set member
+- Step is **optionnal**. It's needed only if you have different mongodb instances. You should copy  keyfile to each replicat set member
 
 ::
  
@@ -137,13 +137,15 @@ Restart each member of the replica set with access control enabled.
 - Start mongodb :
 
 ::
+
  sudo service mongod start
 
 - Create users
 
 You **must** be connected to the primary to create users. Run rs.status() from the mongo shell to find out which instance is the primary. When you activate authentication, you must create an admin user otherwise you will not be able to create new users. 
 
-Create an super admin user for monogdb as follow:
+Create an super admin user for monogdb as follow.
+
 
 ::
 
@@ -168,6 +170,7 @@ You should see "Successfully added user" as the response.
 Create an admin for the database hosting opensilex application:
 
 ::
+
  use admin
  db.createUser(
    {
