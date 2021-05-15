@@ -207,5 +207,42 @@ Replace the tag <db_name> with the name of your mongo database.
 
  sudo systemctl restart opensilex
  
+Activate https
+--------------
 
+Define a FQDN for the server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before installing the certificate, you must define a FQDN (Fully Qualified Domain Name) for the server. Your cloud provider should propose this service.
+
+Install the SSL certificate
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can request a SSL certificate to your cloud provider or use certbot. 
+
+Certbot is a free, open source software tool for automatically using Let's Encrypt certificates on manually-administrated websites to enable HTTPS. Certbot is made by the Electronic Frontier Foundation (EFF), a 501(c)3 nonprofit based in San Francisco.
+
+- install certbot package
+
+::
+
+ sudo apt install certbot python3-certbot-nginx
+
+- backup current nginx configuration:
+
+::
+
+ sudo cp /etc/nginx/sites-enabled/default /root/default.bck
+
+- Configure nginx to listen a 443 port by default:
+
+::
+
+ sudo certbot --nginx
+ Please enter in your domain
+ name(s) (comma and/or space separated)  (Enter 'c' to cancel): specify FQDN of your serveur
+ Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.: 2 (Redirect)
+
+
+- You can open a browser and go to the opensilex application at http://your-sername.yourdomain-name. You should automatically be redirected to the https version of the opensilex application.
 
