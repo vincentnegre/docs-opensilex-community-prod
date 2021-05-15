@@ -51,3 +51,48 @@ Its purpose is to offer a better management of dependencies between services, as
 ::
 
   sudo systemctl status graphdb
+
+Opensilex application as a service
+----------------------------------
+
+- Create file */etc/systemd/system/opensilex.service*:
+
+::
+
+ [Unit]
+ Description= opensilex service
+ Requires=graphdb.service
+ After=graphdb.service
+
+ [Service]
+ Type=oneshot
+ RemainAfterExit=yes
+ User=opensilex
+ ExecStart=/home/opensilex/1.0.0-beta/bin/opensilex.sh server start --adminPort=4081 --port=8081
+ ExecStop=/home/opensilex/1.0.0-beta/bin/opensilex.sh server stop --port=8081
+
+ [Install]
+ WantedBy=multi-user.target
+
+- To start opensilex service at startup, use the enable command:
+
+::
+
+ sudo systemctl enable opensilex
+
+- Verify that everything works by restarting the server:
+
+::
+
+ sudo shutdown -r now
+
+- Once the server is restarted check if the opensilex application is running:
+
+::
+
+ systemctl status opensilex
+ May 08 11:37:22 phisphenoarch opensilex.sh[935]: INFO: Starting ProtocolHandler ["http-nio-8081"]
+
+You can also open a browser and go the opensilex application at http://server_IP_adress:8081/app/
+
+
