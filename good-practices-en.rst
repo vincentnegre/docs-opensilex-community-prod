@@ -145,13 +145,13 @@ Create users
 
 You **must** be connected to the primary to create users. Run rs.status() from the mongo shell to find out which instance is the primary. When you activate authentication, you must create an admin user otherwise you will not be able to create new users. 
 
- - Run the mongo client
+- Run the mongo client
 
- ::
+::
 
-  mongo
+ mongo
 
- - Create an super admin user for monogdb :
+- Create an super admin user for monogdb :
 
 ::
 
@@ -173,7 +173,7 @@ You should see "Successfully added user" as the response.
  mongo -u admin -p set_password_for_admin_user
  show dbs;
 
-Create an admin for the database hosting opensilex application:
+- Create an admin for the database hosting opensilex application:
 
 ::
 
