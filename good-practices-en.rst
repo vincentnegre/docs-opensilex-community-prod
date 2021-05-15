@@ -112,7 +112,7 @@ By default MongoDB runs without authentication. Starting in version 3.6 MongoDB 
  sudo chmod 400 /var/lib/mongodb/keyfile
  sudo chown mongodb:mongodb /var/lib/mongodb/keyfile
 
-- Step is **optionnal**. It's needed only if you have different mongodb instances. You should copy  keyfile to each replicat set member
+- This step is **optionnal**. It's needed only if you have different mongodb instances. You should copy  keyfile to each replicat set member
 
 ::
  
@@ -140,12 +140,18 @@ Restart each member of the replica set with access control enabled.
 
  sudo service mongod start
 
-- Create users
+Create users
+~~~~~~~~~~~~
 
 You **must** be connected to the primary to create users. Run rs.status() from the mongo shell to find out which instance is the primary. When you activate authentication, you must create an admin user otherwise you will not be able to create new users. 
 
-Create an super admin user for monogdb as follow.
+ - Run the mongo client
 
+ ::
+
+  mongo
+
+ - Create an super admin user for monogdb :
 
 ::
 
@@ -176,9 +182,12 @@ Create an admin for the database hosting opensilex application:
    {
      user: "opensilex",
      pwd: "set_password_for_opensilex_user",
-     roles: [ { role: "dbOwner", db: "m3parch" } ]
+     roles: [ { role: "dbOwner", db: "<db_name>" } ]
    }
  )
+
+Replace the tag <db_name> with the name of your mongo database.
+ 
 
 - Add the following lines in the opensilex config configuration file ~/config/opensilex.yml (mongodb section) :
 
