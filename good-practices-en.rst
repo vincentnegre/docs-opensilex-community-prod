@@ -244,5 +244,14 @@ Certbot is a free, open source software tool for automatically using Let's Encry
  Please choose whether or not to redirect HTTP traffic to HTTPS, removing HTTP access.: 2 (Redirect)
 
 
-- You can open a browser and go to the opensilex application at http://your-sername.yourdomain-name. You should automatically be redirected to the https version of the opensilex application.
+- You can open a browser and go to the opensilex application at http://<your-servername.yourdomain-name>. You should automatically be redirected to the https version of the opensilex application.
+
+Replace the tag <<your-servername.yourdomain-name> by the FQDN corresponding to your server.
+
+Install the databases on a separate server
+------------------------------------------
+
+The databases (mongodb for the nosql layer, graphdb or rdf4j or the triple store) host all experimental data. In order to limit the risk of hacking, it **recommended** to install these databases on a server isolated from the Internet and to allow connections only with the server hosting the frontend (web server and applications).
+
+
 
