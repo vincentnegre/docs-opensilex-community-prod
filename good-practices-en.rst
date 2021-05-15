@@ -191,7 +191,8 @@ Replace the tag <db_name> with the name of your mongo database.
 
 - Add the following lines in the opensilex configuration file <path_to_opensilex_application>/config/opensilex.yml (mongodb section) :
 
-:
+::
+
             #MongoDB user name
             username: opensilex
 
@@ -203,6 +204,7 @@ Replace the tag <db_name> with the name of your mongo database.
 - Restart opensilex application:
 
 ::
+
  sudo systemctl restart opensilex
  
 
