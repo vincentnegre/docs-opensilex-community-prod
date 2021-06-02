@@ -125,7 +125,7 @@ Restart each member of the replica set with access control enabled.
 
 ::
 
- sudo service mongod stop
+sudo systemctl stop mongod
 
 - Update the configuration file */etc/mongod.conf*. Uncomment out the security section, and enter: 
 
@@ -138,7 +138,7 @@ Restart each member of the replica set with access control enabled.
 
 ::
 
- sudo service mongod start
+ sudo systemctl start mongod
 
 Create users
 ~~~~~~~~~~~~
