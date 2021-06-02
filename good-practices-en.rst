@@ -156,7 +156,7 @@ You **must** be connected to the primary to create users. Run rs.status() from t
 ::
 
  use admin;
- admin.createUser(
+ db.createUser(
    {
      user: "admin",
      pwd: "set_password_for_admin_user",
